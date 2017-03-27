@@ -1,28 +1,30 @@
-NAME	= .humain
+NAME		= human
 
-SRC		= src/main.c \
-		src/humain.c \
-		include/humain.h
+SRC			= src/main.c \
+			src/human.c
 
-OBJ		=
+INCLDIR		= include/
 
-CC		= gcc
+OBJ			= $(SRC:.c=.o)
 
-RM		= rm -f
+CC			= cc
 
-CFLAGS	+= -Wextra -Wall -Werror
-CFLAGS  += -ansi -pedantic
+RM			= rm -f
 
-all:	 $(NAME)
+CFLAGS		+= -I $(INCLDIR)
+CFLAGS		+= -Wextra -Wall -Werror
 
-$(NAME): $(OBJ)
+all:	 	$(NAME)
 
-clearn:
-		 $(RM) $(OBJ)
+$(NAME): 	$(OBJ)
+			$(CC) -o $@ $^
 
-fclearn: clearn
-		 $(RM) $(NAME)
+clean:
+		 	$(RM) $(OBJ)
 
-re: 	fclearn all
+fclean: 	clean
+		 	$(RM) $(NAME)
 
-.PHONY: all clearn fclearn re
+re: 		fclean all
+
+.PHONY: 	all clean fclean re
