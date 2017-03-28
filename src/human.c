@@ -18,12 +18,14 @@ t_human *create_human(int age, int sex, char *name)
 
 void print_human(t_human *human)
 {
-	if ((human->sex) == 0)
-		printf("%s is %d and she's a female\n", human->name, human->age);
-	else if ((human->sex)== 1)
-		printf("%s is %d and he's a male\n", human->name, human->age);
+  printf("%s is %d and ", human->name, human-age);
+
+	if (human->sex == 0)
+		printf("she's a female\n");
+	else if (human->sex == 1)
+		printf("he's a male\n");
 	else
-		printf("%s is %d and it's a trans\n", human->name, human->age);
+		printf("it's a trans\n");
 }
 
 void kill_human(t_human *human)
